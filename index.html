@@ -9,6 +9,7 @@
             --dark-violet-blue: #24158C;
             --background-dark: #121212;
             --text-color: #E0E0E0;
+            --menu-background: rgba(36, 21, 140, 0.8);
         }
 
         * {
@@ -23,6 +24,97 @@
             background-color: var(--background-dark);
             color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--menu-background);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: left 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            left: 0;
+        }
+
+        .menu-list {
+            list-style: none;
+            text-align: center;
+        }
+
+        .menu-list li {
+            margin: 20px 0;
+        }
+
+        .menu-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu-list a:hover {
+            color: #fff;
+        }
+
+        /* Animated Background */
+        #name-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(36, 21, 140, 0.1);
+            animation: float 10s infinite alternate;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50px);
+            }
         }
 
         .container {
@@ -48,6 +140,9 @@
             font-weight: bold;
             text-align: center;
             color: var(--dark-violet-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .section-content {
@@ -72,16 +167,34 @@
             font-size: 1.2rem;
         }
 
-        /* Ensure scrollable content */
         .spacer {
             height: 100vh;
         }
     </style>
 </head>
 <body>
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay">
+        <ul class="menu-list">
+            <li><a href="#name-section" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#education-section" onclick="toggleMenu()">Education</a></li>
+            <li><a href="#experience-section" onclick="toggleMenu()">Experience</a></li>
+            <li><a href="#projects-section" onclick="toggleMenu()">Projects</a></li>
+            <li><a href="#skills-section" onclick="toggleMenu()">Skills</a></li>
+        </ul>
+    </div>
+
     <div class="container">
         <div id="name-section" class="section">
-            SMRUTHI BALAJI
+            <div class="background-animation"></div>
+            Smruthi Balaji
         </div>
 
         <div class="spacer"></div>
@@ -90,9 +203,9 @@
             <div class="section-content">
                 <h2>Education</h2>
                 <ul>
-                    <li>SHIV NADAR UNIVERSITY</li>
-                    <li>BTech Artificial Intelligence & Data Science</li>
-                    <li>CGPA : 9.4 (until 6th semester)</li>
+                    <li>Degree Name, University Name, Year</li>
+                    <li>Major/Specialization</li>
+                    <li>Relevant Coursework</li>
                 </ul>
             </div>
         </div>
@@ -138,6 +251,11 @@
     </div>
 
     <script>
+        function toggleMenu() {
+            const menuOverlay = document.querySelector('.menu-overlay');
+            menuOverlay.classList.toggle('active');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const sections = [
                 'name-section', 
@@ -147,11 +265,27 @@
                 'skills-section'
             ];
 
-            // Show initial sections
-            sections.forEach((sectionId, index) => {
-                const section = document.getElementById(sectionId);
-                section.style.opacity = index === 0 ? '1' : '0';
-            });
+            // Create bubbles for background animation
+            const backgroundAnimation = document.querySelector('.background-animation');
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                // Random size
+                const size = Math.random() * 100 + 50;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                
+                // Random position
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                bubble.style.animationDelay = `${Math.random() * 5}s`;
+                bubble.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                
+                backgroundAnimation.appendChild(bubble);
+            }
 
             // Intersection Observer to handle section visibility
             const observer = new IntersectionObserver((entries) => {
