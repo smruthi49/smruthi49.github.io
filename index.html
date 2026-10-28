@@ -1,317 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smruthi Balaji - Portfolio</title>
-    <style>
-        :root {
-            --dark-violet-blue: #24158C;
-            --background-dark: #121212;
-            --text-color: #E0E0E0;
-            --menu-background: rgba(36, 21, 140, 0.8);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--background-dark);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Hamburger Menu */
-        .hamburger-menu {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            cursor: pointer;
-            width: 30px;
-            height: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .hamburger-line {
-            width: 100%;
-            height: 3px;
-            background-color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background-color: var(--menu-background);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: left 0.3s ease;
-        }
-
-        .menu-overlay.active {
-            left: 0;
-        }
-
-        .menu-list {
-            list-style: none;
-            text-align: center;
-        }
-
-        .menu-list li {
-            margin: 20px 0;
-        }
-
-        .menu-list a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 2rem;
-            transition: color 0.3s ease;
-        }
-
-        .menu-list a:hover {
-            color: #fff;
-        }
-
-        /* Animated Background */
-        #name-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(36, 21, 140, 0.1);
-            animation: float 10s infinite alternate;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-50px);
-            }
-        }
-
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .section {
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            background-color: var(--background-dark);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        #name-section {
-            opacity: 1;
-            font-size: 4rem;
-            font-weight: bold;
-            text-align: center;
-            color: var(--dark-violet-blue);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .section-content {
-            max-width: 800px;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        h2 {
-            color: var(--dark-violet-blue);
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .section-content ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .section-content li {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .spacer {
-            height: 100vh;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smruthi Balaji &mdash; Portfolio</title>
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/markdown.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- Hamburger Menu -->
-    <div class="hamburger-menu" onclick="toggleMenu()">
-        <div class="hamburger-line"></div>
-        <div class="hamburger-line"></div>
-        <div class="hamburger-line"></div>
+
+  <!-- Title Bar -->
+  <div class="titlebar">
+    <div class="titlebar-left">
+      <span class="titlebar-icon">&#x2B21;</span>
+      <span class="titlebar-name">smruthi49.github.io</span>
+    </div>
+    <div class="titlebar-center">
+      <span class="breadcrumb" id="breadcrumb">portfolio / about.md</span>
+    </div>
+    <div class="titlebar-right">
+      <!-- theme switcher moved to settings only -->
+    </div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- Activity Bar -->
+    <div class="activity-bar">
+      <div class="activity-icons-top">
+        <button class="activity-icon active" id="explorerToggle" title="Explorer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><path d="M3 7v13"/></svg>
+        </button>
+        <button class="activity-icon" id="searchToggle" title="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+      </div>
+      <div class="activity-icons-bottom">
+        <button class="activity-icon" id="settingsBtn" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Menu Overlay -->
-    <div class="menu-overlay">
-        <ul class="menu-list">
-            <li><a href="#name-section" onclick="toggleMenu()">Home</a></li>
-            <li><a href="#education-section" onclick="toggleMenu()">Education</a></li>
-            <li><a href="#experience-section" onclick="toggleMenu()">Experience</a></li>
-            <li><a href="#projects-section" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#skills-section" onclick="toggleMenu()">Skills</a></li>
-            <li><a href="notes.html" onclick="toggleMenu()">Notes</a></li>
-        </ul>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-title">EXPLORER</span>
+        <button class="sidebar-collapse" id="sidebarCollapse" title="Collapse">&#x2039;</button>
+      </div>
+
+      <div class="file-tree">
+
+        <!-- 1. PORTFOLIO folder -->
+        <div class="tree-section open" id="portfolioSection">
+          <div class="tree-section-header" data-section="portfolioSection">
+            <span class="tree-arrow">&#x25BE;</span>
+            <span class="tree-folder-icon">&#x1F4C1;</span>
+            <span class="tree-label">PORTFOLIO</span>
+          </div>
+          <div class="tree-children">
+            <div class="tree-item active" data-page="about">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">about.md</span>
+            </div>
+            <div class="tree-item" data-page="experience">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">experience.md</span>
+            </div>
+            <div class="tree-item" data-page="education">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">education.md</span>
+            </div>
+            <div class="tree-item" data-page="skills">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">skills.md</span>
+            </div>
+            <div class="tree-item" data-page="projects">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">projects.md</span>
+            </div>
+            <div class="tree-item" data-page="research">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">research.md</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. BLOG POSTS folder -->
+        <div class="tree-section" id="blogSection">
+          <div class="tree-section-header" data-section="blogSection">
+            <span class="tree-arrow">&#x25B8;</span>
+            <span class="tree-folder-icon">&#x1F4C2;</span>
+            <span class="tree-label">BLOG POSTS</span>
+          </div>
+          <div class="tree-children">
+            <div class="tree-item active-blog" data-page="blogposts">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">index.md</span>
+            </div>
+            <div id="blogTree">
+              <!-- individual post items injected by blog.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. MISCELLANEOUS folder -->
+        <div class="tree-section" id="miscSection">
+          <div class="tree-section-header" data-section="miscSection">
+            <span class="tree-arrow">&#x25B8;</span>
+            <span class="tree-folder-icon">&#x1F4C2;</span>
+            <span class="tree-label">MISCELLANEOUS</span>
+          </div>
+          <div class="tree-children">
+            <div class="tree-item" data-page="misc">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">misc.md</span>
+            </div>
+            <div class="tree-item" data-page="community">
+              <span class="tree-indent"></span>
+              <span class="file-icon md-icon">M&#x2193;</span>
+              <span class="tree-label">community.md</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. CONNECT WITH ME folder (last) -->
+        <div class="tree-section" id="connectSection">
+          <div class="tree-section-header" data-section="connectSection">
+            <span class="tree-arrow">&#x25B8;</span>
+            <span class="tree-folder-icon">&#x1F4C2;</span>
+            <span class="tree-label">CONNECT WITH ME</span>
+          </div>
+          <div class="tree-children">
+            <div class="tree-item" data-page="connect-github">
+              <span class="tree-indent"></span>
+              <span class="file-icon" style="color:#6e9f3c;background:rgba(110,159,60,0.15)">GH</span>
+              <span class="tree-label">github.js</span>
+            </div>
+            <div class="tree-item" data-page="connect-linkedin">
+              <span class="tree-indent"></span>
+              <span class="file-icon" style="color:#4a9eca;background:rgba(74,158,202,0.15)">IN</span>
+              <span class="tree-label">linkedin.js</span>
+            </div>
+            <div class="tree-item" data-page="connect-x">
+              <span class="tree-indent"></span>
+              <span class="file-icon" style="color:#e7e7e7;background:rgba(231,231,231,0.12)">X</span>
+              <span class="tree-label">x.js</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /file-tree -->
+
+      <!-- Search panel (hidden by default) -->
+      <div class="search-panel" id="searchPanel" style="display:none">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search files&hellip;" autocomplete="off" />
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </aside>
+
+    <!-- Main Editor Area -->
+    <main class="editor-area">
+      <div class="tab-bar" id="tabBar">
+        <div class="tab active" data-tab="about">
+          <span class="tab-file-icon">M&#x2193;</span>
+          <span class="tab-label">about.md</span>
+          <button class="tab-close">&#x00D7;</button>
+        </div>
+      </div>
+
+      <div class="editor-content">
+        <div class="line-numbers" id="lineNumbers"></div>
+        <div class="page-content" id="pageContent"></div>
+      </div>
+
+      <div class="status-bar">
+        <div class="status-left">
+          <span class="status-item status-branch">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M11.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122V6A2.5 2.5 0 0110 8.5H6a1 1 0 00-1 1v1.128a2.251 2.251 0 11-1.5 0V5.372a2.25 2.25 0 111.5 0v1.836A2.492 2.492 0 016 7h4a1 1 0 001-1v-.628A2.25 2.25 0 019.5 3.25z"/></svg>
+            main
+          </span>
+          <span class="status-item" id="statusFile">about.md</span>
+        </div>
+        <div class="status-right">
+          <span class="status-item" id="statusTheme">Dark</span>
+          <span class="status-item">Markdown</span>
+          <span class="status-item">UTF-8</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settingsModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <span>&#x2699; Settings</span>
+        <button class="modal-close" id="modalClose">&#x00D7;</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-row">
+          <label>Color Theme</label>
+          <select id="themeSelect">
+            <option value="dark">Dark (Default)</option>
+            <option value="light">Light</option>
+            <option value="monokai">Monokai</option>
+            <option value="solarized">Solarized Dark</option>
+            <option value="nord">Nord</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label>Font Size</label>
+          <select id="fontSizeSelect">
+            <option value="13">13px</option>
+            <option value="14" selected>14px</option>
+            <option value="15">15px</option>
+            <option value="16">16px</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label>Line Numbers</label>
+          <input type="checkbox" id="lineNumToggle" checked />
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container">
-        <div id="name-section" class="section">
-            <div class="background-animation"></div>
-            Smruthi Balaji
-        </div>
-
-        <div class="spacer"></div>
-
-        <div id="education-section" class="section">
-            <div class="section-content">
-                <h2>Education</h2>
-                <ul>
-                    <li>Degree Name, University Name, Year</li>
-                    <li>Major/Specialization</li>
-                    <li>Relevant Coursework</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="spacer"></div>
-
-        <div id="experience-section" class="section">
-            <div class="section-content">
-                <h2>Experience</h2>
-                <ul>
-                    <li>Job Title, Company Name, Duration</li>
-                    <li>Key Responsibilities</li>
-                    <li>Notable Achievements</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="spacer"></div>
-
-        <div id="projects-section" class="section">
-            <div class="section-content">
-                <h2>Projects</h2>
-                <ul>
-                    <li>Project 1 Name</li>
-                    <li>Project 2 Name</li>
-                    <li>Project 3 Name</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="spacer"></div>
-
-        <div id="skills-section" class="section">
-            <div class="section-content">
-                <h2>Skills</h2>
-                <ul>
-                    <li>Technical Skill 1</li>
-                    <li>Technical Skill 2</li>
-                    <li>Soft Skill 1</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            const menuOverlay = document.querySelector('.menu-overlay');
-            menuOverlay.classList.toggle('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = [
-                'name-section', 
-                'education-section', 
-                'experience-section', 
-                'projects-section', 
-                'skills-section'
-            ];
-
-            // Create bubbles for background animation
-            const backgroundAnimation = document.querySelector('.background-animation');
-            for (let i = 0; i < 20; i++) {
-                const bubble = document.createElement('div');
-                bubble.classList.add('bubble');
-                
-                // Random size
-                const size = Math.random() * 100 + 50;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                
-                // Random position
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation delay and duration
-                bubble.style.animationDelay = `${Math.random() * 5}s`;
-                bubble.style.animationDuration = `${Math.random() * 10 + 5}s`;
-                
-                backgroundAnimation.appendChild(bubble);
-            }
-
-            // Intersection Observer to handle section visibility
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Hide all sections
-                        sections.forEach(sectionId => {
-                            const section = document.getElementById(sectionId);
-                            section.style.opacity = '0';
-                        });
-
-                        // Show current section
-                        entry.target.style.opacity = '1';
-                    }
-                });
-            }, {
-                threshold: 0.5  // Trigger when 50% of section is visible
-            });
-
-            // Observe each section
-            sections.forEach(sectionId => {
-                const section = document.getElementById(sectionId);
-                observer.observe(section);
-            });
-        });
-    </script>
+  <script src="js/pages.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

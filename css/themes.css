@@ -1,0 +1,188 @@
+/* ============================================
+   THEMES — CSS custom properties for each mode
+   ============================================ */
+
+/* ── Dark (VSCode Default Dark) ── */
+[data-theme="dark"] {
+  --bg-app:          #1e1e1e;
+  --bg-sidebar:      #252526;
+  --bg-editor:       #1e1e1e;
+  --bg-titlebar:     #323233;
+  --bg-statusbar:    #007acc;
+  --bg-tab-active:   #1e1e1e;
+  --bg-tab-inactive: #2d2d2d;
+  --bg-tab-hover:    #2a2a2a;
+  --bg-item-hover:   #2a2d2e;
+  --bg-item-active:  #094771;
+  --bg-modal:        #252526;
+  --bg-input:        #3c3c3c;
+
+  --text-primary:    #d4d4d4;
+  --text-secondary:  #858585;
+  --text-accent:     #9cdcfe;
+  --text-heading:    #4ec9b0;
+  --text-titlebar:   #cccccc;
+  --text-statusbar:  #ffffff;
+  --text-string:     #ce9178;
+  --text-keyword:    #569cd6;
+  --text-comment:    #6a9955;
+  --text-number:     #b5cea8;
+
+  --border-color:    #3c3c3c;
+  --border-sidebar:  #3c3c3c;
+  --scrollbar-thumb: #424242;
+
+  --link-color:      #4ec9b0;
+  --tag-bg:          #0e4f6e;
+  --tag-text:        #9cdcfe;
+
+  --theme-name: "Dark";
+}
+
+/* ── Light ── */
+[data-theme="light"] {
+  --bg-app:          #f3f3f3;
+  --bg-sidebar:      #f3f3f3;
+  --bg-editor:       #ffffff;
+  --bg-titlebar:     #dddddd;
+  --bg-statusbar:    #007acc;
+  --bg-tab-active:   #ffffff;
+  --bg-tab-inactive: #ececec;
+  --bg-tab-hover:    #e8e8e8;
+  --bg-item-hover:   #e8e8e8;
+  --bg-item-active:  #cce5ff;
+  --bg-modal:        #ffffff;
+  --bg-input:        #ffffff;
+
+  --text-primary:    #333333;
+  --text-secondary:  #717171;
+  --text-accent:     #0070c1;
+  --text-heading:    #267f99;
+  --text-titlebar:   #6f6f6f;
+  --text-statusbar:  #ffffff;
+  --text-string:     #a31515;
+  --text-keyword:    #0000ff;
+  --text-comment:    #008000;
+  --text-number:     #098658;
+
+  --border-color:    #e0e0e0;
+  --border-sidebar:  #e0e0e0;
+  --scrollbar-thumb: #c1c1c1;
+
+  --link-color:      #0070c1;
+  --tag-bg:          #dbeafe;
+  --tag-text:        #0070c1;
+
+  --theme-name: "Light";
+}
+
+/* ── Monokai ── */
+[data-theme="monokai"] {
+  --bg-app:          #272822;
+  --bg-sidebar:      #1e1f1c;
+  --bg-editor:       #272822;
+  --bg-titlebar:     #1e1f1c;
+  --bg-statusbar:    #75715e;
+  --bg-tab-active:   #272822;
+  --bg-tab-inactive: #1e1f1c;
+  --bg-tab-hover:    #2d2e28;
+  --bg-item-hover:   #2d2e28;
+  --bg-item-active:  #3e3d32;
+  --bg-modal:        #1e1f1c;
+  --bg-input:        #3e3d32;
+
+  --text-primary:    #f8f8f2;
+  --text-secondary:  #75715e;
+  --text-accent:     #a6e22e;
+  --text-heading:    #e6db74;
+  --text-titlebar:   #f8f8f2;
+  --text-statusbar:  #f8f8f2;
+  --text-string:     #e6db74;
+  --text-keyword:    #f92672;
+  --text-comment:    #75715e;
+  --text-number:     #ae81ff;
+
+  --border-color:    #3e3d32;
+  --border-sidebar:  #3e3d32;
+  --scrollbar-thumb: #49483e;
+
+  --link-color:      #a6e22e;
+  --tag-bg:          #3a3b2d;
+  --tag-text:        #a6e22e;
+
+  --theme-name: "Monokai";
+}
+
+/* ── Solarized Dark ── */
+[data-theme="solarized"] {
+  --bg-app:          #002b36;
+  --bg-sidebar:      #073642;
+  --bg-editor:       #002b36;
+  --bg-titlebar:     #073642;
+  --bg-statusbar:    #268bd2;
+  --bg-tab-active:   #002b36;
+  --bg-tab-inactive: #073642;
+  --bg-tab-hover:    #0d3d4a;
+  --bg-item-hover:   #0d3d4a;
+  --bg-item-active:  #144552;
+  --bg-modal:        #073642;
+  --bg-input:        #0a3f4e;
+
+  --text-primary:    #839496;
+  --text-secondary:  #586e75;
+  --text-accent:     #2aa198;
+  --text-heading:    #268bd2;
+  --text-titlebar:   #93a1a1;
+  --text-statusbar:  #fdf6e3;
+  --text-string:     #2aa198;
+  --text-keyword:    #859900;
+  --text-comment:    #586e75;
+  --text-number:     #d33682;
+
+  --border-color:    #073642;
+  --border-sidebar:  #073642;
+  --scrollbar-thumb: #0e4556;
+
+  --link-color:      #268bd2;
+  --tag-bg:          #073642;
+  --tag-text:        #2aa198;
+
+  --theme-name: "Solarized";
+}
+
+/* ── Nord ── */
+[data-theme="nord"] {
+  --bg-app:          #2e3440;
+  --bg-sidebar:      #2e3440;
+  --bg-editor:       #2e3440;
+  --bg-titlebar:     #232830;
+  --bg-statusbar:    #5e81ac;
+  --bg-tab-active:   #3b4252;
+  --bg-tab-inactive: #2e3440;
+  --bg-tab-hover:    #353c4a;
+  --bg-item-hover:   #353c4a;
+  --bg-item-active:  #3b4252;
+  --bg-modal:        #3b4252;
+  --bg-input:        #434c5e;
+
+  --text-primary:    #d8dee9;
+  --text-secondary:  #4c566a;
+  --text-accent:     #88c0d0;
+  --text-heading:    #81a1c1;
+  --text-titlebar:   #eceff4;
+  --text-statusbar:  #eceff4;
+  --text-string:     #a3be8c;
+  --text-keyword:    #81a1c1;
+  --text-comment:    #4c566a;
+  --text-number:     #b48ead;
+
+  --border-color:    #3b4252;
+  --border-sidebar:  #3b4252;
+  --scrollbar-thumb: #3b4252;
+
+  --link-color:      #88c0d0;
+  --tag-bg:          #3b4252;
+  --tag-text:        #88c0d0;
+
+  --theme-name: "Nord";
+}
