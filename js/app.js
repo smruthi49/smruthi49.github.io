@@ -40,7 +40,7 @@ window.APP = {
       'connect-x':        'x.js'
     };
     var label  = labelMap[page] || (page + '.md');
-    var folder = page.startsWith('connect-') ? 'connect' : 'portfolio';
+    var folder = page.startsWith('connect-') ? 'connect' : 'smruthi';
 
     // Sidebar highlight
     document.querySelectorAll('.tree-item').forEach(function(el) {
@@ -60,6 +60,8 @@ window.APP = {
       var ms = document.getElementById('miscSection');
       if (ms) ms.classList.add('open');
     }
+
+    this.closeMobileMenu();
 
     // Tab
     this.openTab(page, label);
@@ -106,6 +108,7 @@ window.APP = {
       if (bs) bs.classList.add('open');
     }
 
+    this.closeMobileMenu();
     this.openTab('blog:' + slug, label);
 
     var el = document.getElementById('pageContent');
@@ -180,6 +183,22 @@ window.APP = {
         this.navigate('about');
       }
     }
+  },
+
+  // ── Mobile menu ───────────────────────────────────────────────────────────
+  isMobile() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  },
+
+  toggleMobileMenu(open) {
+    var sidebar = document.getElementById('sidebar');
+    var isOpen  = typeof open === 'boolean' ? open : !sidebar.classList.contains('mobile-open');
+    sidebar.classList.toggle('mobile-open', isOpen);
+    document.getElementById('sidebarBackdrop').classList.toggle('show', isOpen);
+  },
+
+  closeMobileMenu() {
+    if (this.isMobile()) this.toggleMobileMenu(false);
   },
 
   // ── Line numbers ──────────────────────────────────────────────────────────
@@ -340,10 +359,20 @@ window.APP = {
       document.getElementById('sidebar').classList.toggle('collapsed');
     });
 
+    // Mobile menu
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      self.toggleMobileMenu();
+    });
+    document.getElementById('sidebarBackdrop').addEventListener('click', function() {
+      self.toggleMobileMenu(false);
+    });
+
     // Settings open
-    document.getElementById('settingsBtn').addEventListener('click', function() {
-      self.syncSettingsUI();
-      document.getElementById('settingsModal').style.display = 'flex';
+    ['settingsBtn', 'mobileSettingsBtn'].forEach(function(id) {
+      document.getElementById(id).addEventListener('click', function() {
+        self.syncSettingsUI();
+        document.getElementById('settingsModal').style.display = 'flex';
+      });
     });
 
     // Settings close
@@ -379,6 +408,7 @@ window.APP = {
       }
       if (e.key === 'Escape') {
         document.getElementById('settingsModal').style.display = 'none';
+        self.toggleMobileMenu(false);
       }
     });
   }

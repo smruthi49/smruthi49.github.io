@@ -231,3 +231,10 @@
   font-size: 13px;
   padding: 20px;
 }
+
+@media (max-width: 768px) {
+  .tree-item { padding: 8px 10px 8px 20px; }
+  .tree-section-header { padding-top: 8px; padding-bottom: 8px; }
+  .tab { padding: 0 10px; }
+  .modal { width: 92vw; }
+}

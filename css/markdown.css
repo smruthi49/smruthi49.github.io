@@ -578,3 +578,19 @@
   background: var(--bg-item-hover);
   transform: translateX(4px);
 }
+
+/* ── Phone screens ── */
+@media (max-width: 768px) {
+  .md-h1 { font-size: 18px; margin-top: 24px; }
+  .profile-block { gap: 16px; padding: 16px; margin-bottom: 24px; align-items: center; }
+  .profile-avatar, .profile-avatar-placeholder { width: 64px; height: 64px; font-size: 26px; flex-shrink: 0; }
+  .profile-name { font-size: 18px; }
+  .card:hover { transform: none; }
+  .research-card { padding: 14px 16px; }
+  .timeline-item { padding-left: 24px; }
+  .connect-hero { gap: 14px; padding: 16px; }
+  .connect-icon { font-size: 28px; }
+  .connect-handle { word-break: break-all; }
+  .connect-cta { width: 100%; justify-content: center; }
+  .grade-row { padding: 8px 10px; }
+}

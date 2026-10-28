@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smruthi Balaji &mdash; Portfolio</title>
+  <title>Smruthi Balaji</title>
   <link rel="stylesheet" href="css/themes.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
@@ -17,14 +17,20 @@
   <!-- Title Bar -->
   <div class="titlebar">
     <div class="titlebar-left">
+      <button class="titlebar-btn menu-btn" id="menuToggle" title="Menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
       <span class="titlebar-icon">&#x2B21;</span>
       <span class="titlebar-name">smruthi49.github.io</span>
     </div>
     <div class="titlebar-center">
-      <span class="breadcrumb" id="breadcrumb">portfolio / about.md</span>
+      <span class="breadcrumb" id="breadcrumb">smruthi / about.md</span>
     </div>
     <div class="titlebar-right">
       <!-- theme switcher moved to settings only -->
+      <button class="titlebar-btn mobile-settings-btn" id="mobileSettingsBtn" title="Settings" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      </button>
     </div>
   </div>
 
@@ -56,12 +62,12 @@
 
       <div class="file-tree">
 
-        <!-- 1. PORTFOLIO folder -->
+        <!-- 1. SMRUTHI folder -->
         <div class="tree-section open" id="portfolioSection">
           <div class="tree-section-header" data-section="portfolioSection">
             <span class="tree-arrow">&#x25BE;</span>
             <span class="tree-folder-icon">&#x1F4C1;</span>
-            <span class="tree-label">PORTFOLIO</span>
+            <span class="tree-label">SMRUTHI</span>
           </div>
           <div class="tree-children">
             <div class="tree-item active" data-page="about">
@@ -171,6 +177,8 @@
         <div class="search-results" id="searchResults"></div>
       </div>
     </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <!-- Main Editor Area -->
     <main class="editor-area">
